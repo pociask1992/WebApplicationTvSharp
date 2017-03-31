@@ -15,23 +15,27 @@ namespace WebApplicationTV.Services
         {
             _movies = new List<Movie> { };
 
-            _movies.Add(
-                new Movie()
-                {
-                    Id = 1,
-                    Author = "Author1",
-                    Title = "Title1",
-                    Year = 1992,
-                    Comments = { "Very good film", "Very bad film"}
-                });
 
-            _movies.Add(
-                new Movie()
+            Movie movie1 = new Movie()
+             {
+                 Id = 1,
+                 Author = "Author1",
+                 Title = "Title1",
+                 Year = 1992,
+                 Comments = new List<string> {"Very good film", "Very bad film" }
+             };
+
+            Movie movie2 = new Movie()
                 {
-                    Id =2,
-                    Author="Author2",
-                    Title="Title2",
-                });
+                    Id = 2,
+                    Author = "Author2",
+                    Title = "Title2",
+                    Year = 1993,
+                    Comments = new List<string> {"Good good film 1"}
+                };
+
+            _movies.Add(movie1);
+            _movies.Add(movie2);
         }
 
         public static MoviesServices Instance
@@ -39,7 +43,7 @@ namespace WebApplicationTV.Services
             get
             {
                 if (_instance == null)
-                 _instance = new MoviesServices();
+                    _instance = new MoviesServices();
 
                 return _instance;
             }
