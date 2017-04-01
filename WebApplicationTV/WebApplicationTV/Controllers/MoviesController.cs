@@ -50,5 +50,19 @@ namespace WebApplicationTV.Controllers
             _movieService.DeleteMovie(movieId);
             return Ok();
         }
+
+        [HttpPut, Route("movies")]
+        public IHttpActionResult UpdateMovie([FromBody] Movie movie)
+        {
+            bool result = _movieService.UpdateMovie(movie);
+            if (result == true)
+            {
+                return Ok();
+            }
+            else
+            {
+                return NotFound();
+            }
+        }
     }
 }

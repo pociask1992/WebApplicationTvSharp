@@ -22,7 +22,7 @@ namespace WebApplicationTV.Services
                  Author = "Author1",
                  Title = "Title1",
                  Year = 1992,
-                 Comments = new List<string> {"Very good film", "Very bad film" }
+                 Comments = new List<string> { "Very good film", "Very bad film" }
              };
 
             Movie movie2 = new Movie()
@@ -31,7 +31,7 @@ namespace WebApplicationTV.Services
                     Author = "Author2",
                     Title = "Title2",
                     Year = 1993,
-                    Comments = new List<string> {"Good good film 1"}
+                    Comments = new List<string> { "Good good film 1" }
                 };
 
             _movies.Add(movie1);
@@ -69,6 +69,22 @@ namespace WebApplicationTV.Services
         {
             Movie foundedMovie = GetById(movieId);
             _movies.Remove(foundedMovie);
+        }
+
+        public bool UpdateMovie(Movie movie)
+        {
+            Movie foundedMovie = GetById(movie.Id);
+            if (foundedMovie != null)
+            {
+                _movies.Remove(foundedMovie);
+                _movies.Add(movie);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 }
